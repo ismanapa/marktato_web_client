@@ -11,7 +11,7 @@ import './App.css';
 const App = () => (
   <ApolloProvider client={apolloClient}>
     <Fragment>
-      <Header />
+      <Header title={'Marktato'}/>
       <section>
         <BookmarksPage />
       </section>
