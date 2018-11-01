@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import gql from 'graphql-tag';
-import { Query, graphql } from 'react-apollo';
+import { graphql } from 'react-apollo';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import {
   BookmarkList,
@@ -16,8 +17,11 @@ const bookmarkQuery = gql`
   }
 `;
 
-const BookmarksPage = ({ loading, error, data }) => (
-<BookmarkList bookmarks={data.bookmarks} />
+const BookmarksPage = ({ data }) => (
+    <Fragment>
+      { data.loading && <CircularProgress/>}
+      <BookmarkList bookmarks={data.bookmarks} />
+    </Fragment>
 );
 
 BookmarksPage.propTypes = {
