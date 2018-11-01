@@ -1,37 +1,29 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import gql from 'graphql-tag';
+import { Query, graphql } from 'react-apollo';
+
 import {
   BookmarkList,
 } from './components';
 
-const mockedBookmarks = [
-  {
-    name: 'Bookmark 1',
-    url: 'http://www.google.es',
-  },
-  {
-    name: 'Bookmark 2',
-    url: 'http://www.google.es',
-  },
-  {
-    name: 'Bookmark 3',
-    url: 'http://www.google.es',
-  },
-  {
-    name: 'Bookmark 4',
-    url: 'http://www.google.es',
-  },
-  {
-    name: 'Bookmark 5',
-    url: 'http://www.google.es',
-  },
-  {
-    name: 'Bookmark 6',
-    url: 'http://www.google.es',
-  },
-];
+const bookmarkQuery = gql`
+  { 
+    bookmarks{
+      name,
+      url
+    }
+  }
+`;
 
-const BookmarksPage = () => (
-  <BookmarkList bookmarks={mockedBookmarks}/>
+const BookmarksPage = ({ loading, error, data }) => (
+<BookmarkList bookmarks={data.bookmarks} />
 );
 
-export default BookmarksPage;
+BookmarksPage.propTypes = {
+  data: PropTypes.object,
+  loading: PropTypes.bool,
+  error: PropTypes.object,
+};
+
+export default graphql(bookmarkQuery)(BookmarksPage);

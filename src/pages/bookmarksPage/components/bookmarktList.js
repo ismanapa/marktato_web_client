@@ -5,19 +5,19 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 
 const renderListItem = bookmark => (
-  <ListItem>
+  <ListItem key={bookmark.id}>
     <a target="_blank" rel="noopener noreferrer" href={bookmark.url}>{bookmark.name}</a>
   </ListItem>
 );
 
 const BookmarkList = ({ bookmarks }) => (
   <List>
-    {bookmarks.map(renderListItem)}
+    {bookmarks && bookmarks.map(renderListItem)}
   </List>
 );
 
 BookmarkList.propTypes = {
-  bookmarks: PropTypes.array.isRequired,
+  bookmarks: PropTypes.array,
 };
 
 export default BookmarkList;
