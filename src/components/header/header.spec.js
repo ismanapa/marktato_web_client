@@ -1,5 +1,7 @@
 import React from 'react';
-import { mount, shallow } from 'enzyme';
+import { shallow } from 'enzyme';
+import Typography from '@material-ui/core/Typography';
+
 import Header from './header';
 
 describe('Header component', () => {
@@ -10,11 +12,11 @@ describe('Header component', () => {
 
     expect(wrapper).toMatchSnapshot();
   });
-  it('Should have specific title', () => {
+  it('Should have provided title', () => {
     const title = 'Expected title';
 
-    const wrapper = mount(<Header title={title}/>);
+    const wrapper = shallow(<Header title={title}/>);
 
-    expect(wrapper.find('Typography').first().contains(title)).toBeTruthy();
+    expect(wrapper.find('h3').first().contains(title)).toBeTruthy();
   });
 });

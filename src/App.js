@@ -5,7 +5,6 @@ import apolloClient from './services/apolloClient';
 
 import { Header } from './components';
 import { BookmarksPage } from './pages';
-import './App.css';
 
 
 const App = () => (
