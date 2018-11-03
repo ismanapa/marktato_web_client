@@ -4,7 +4,7 @@ import { ApolloProvider } from 'react-apollo';
 import apolloClient from './services/apolloClient';
 
 import { Header } from './components';
-import { BookmarksPage } from './pages';
+import { BookmarksPageContainer } from './containers';
 
 
 const App = () => (
@@ -12,7 +12,7 @@ const App = () => (
     <Fragment>
       <Header title={'Marktato'}/>
       <section>
-        <BookmarksPage />
+        <BookmarksPageContainer />
       </section>
     </Fragment>
   </ApolloProvider>

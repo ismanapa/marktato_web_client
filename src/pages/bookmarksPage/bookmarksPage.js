@@ -1,26 +1,19 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import gql from 'graphql-tag';
-import { graphql } from 'react-apollo';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 import {
   BookmarkList,
 } from './components';
 
-const bookmarkQuery = gql`
-  { 
-    bookmarks{
-      name,
-      url
-    }
-  }
-`;
+const renderList = (data, error) => {
+  if (error) return (<span>{error.toString()}</span>);
+  return <BookmarkList bookmarks={data}/>;
+};
 
-const BookmarksPage = ({ data }) => (
+const BookmarksPage = ({ data, loading, error }) => (
     <Fragment>
-      { data.loading && <CircularProgress/>}
-      <BookmarkList bookmarks={data.bookmarks} />
+      { loading ? <CircularProgress/> : renderList(data, error)}
     </Fragment>
 );
 
@@ -30,4 +23,4 @@ BookmarksPage.propTypes = {
   error: PropTypes.object,
 };
 
-export default graphql(bookmarkQuery)(BookmarksPage);
+export default BookmarksPage;
