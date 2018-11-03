@@ -7,6 +7,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import {
   BookmarkList,
 } from './components';
+import { getBookmarks } from '../../services/graphQueries';
 
 const ADD_BOOKMARK = gql`
   mutation addBookmark (
@@ -38,7 +39,16 @@ const renderAddBookmarkForm = () => {
   return (
     <div>
       <h2>Add bookmark form</h2>
-      <Mutation mutation={ADD_BOOKMARK}>
+      <Mutation
+        mutation={ADD_BOOKMARK}
+        update={(cache, { data: { addBookmark } }) => {
+          const { bookmarks } = cache.readQuery({ query: getBookmarks });
+          cache.writeQuery({
+            query: getBookmarks,
+            data: { bookmarks: bookmarks.concat([addBookmark]) },
+          });
+        }}
+        >
         {
           (addBookmark, { data }) => (
             <form
