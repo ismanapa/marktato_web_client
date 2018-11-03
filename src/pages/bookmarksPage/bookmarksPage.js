@@ -8,7 +8,7 @@ import {
 
 const renderList = (data, error) => {
   if (error) return (<span>{error.toString()}</span>);
-  return <BookmarkList bookmarks={data}/>;
+  return <BookmarkList bookmarks={data.bookmarks}/>;
 };
 
 const BookmarksPage = ({ data, loading, error }) => (
