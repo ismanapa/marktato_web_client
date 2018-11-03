@@ -1,23 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
 
 const renderListItem = bookmark => (
-  <ListItem key={bookmark.id}>
+  <li key={bookmark.id}>
     <a target="_blank" rel="noopener noreferrer" href={bookmark.url}>{bookmark.name}</a>
-  </ListItem>
+  </li>
 );
 
 const BookmarkList = ({ bookmarks }) => (
-  <List>
-    {bookmarks && bookmarks.map(renderListItem)}
-  </List>
+  <ul>
+    {bookmarks.map(renderListItem)}
+  </ul>
 );
 
 BookmarkList.propTypes = {
   bookmarks: PropTypes.array,
+};
+
+BookmarkList.defaultProps = {
+  bookmarks: [],
 };
 
 export default BookmarkList;
