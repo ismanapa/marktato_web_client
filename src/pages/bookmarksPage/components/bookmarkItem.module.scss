@@ -1,0 +1,25 @@
+.bookmarkItemContainer{
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 1px 3px rgba(0,0,0,0.23);
+    flex: 0 1 250px;
+    margin: 10px;
+    position: relative;
+    width: 250px;
+
+    .bookmarkImage{
+        background-color: #e5e5e5;
+        height: 150px;
+        width: 100%;
+    }
+
+    .bookmarkName{
+        font-weight: 500;
+        padding: 10px;
+    }
+
+    .bookmarkItemLink{
+        position: absolute;
+        height: 100%;      
+        top: 0;
+        width: 100%;
+    }
+}

@@ -1,16 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import BookmarkItem from './bookmarkItem';
+
+import styles from './bookmarkList.module.scss';
+
 const renderListItem = bookmark => (
-  <li key={bookmark.id}>
-    <a target="_blank" rel="noopener noreferrer" href={bookmark.url}>{bookmark.name}</a>
-  </li>
+  <BookmarkItem key={bookmark.id} bookmark={bookmark}/>
 );
 
 const BookmarkList = ({ bookmarks }) => (
-  <ul>
+  <div className={styles.bookmarkContainer}>
     {bookmarks.map(renderListItem)}
-  </ul>
+  </div>
 );
 
 BookmarkList.propTypes = {
