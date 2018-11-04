@@ -27,6 +27,12 @@ const ADD_BOOKMARK = gql`
   }
 `;
 
+const UPDATE_BOOKMARKS = gql`
+  mutation UpdateBookmarks($bookmarks: [Bookmark]) {
+    updateBookmarks(bookmarks: $bookmarks) @client
+  }
+`;
+
 const renderList = (data, error) => {
   if (error) return (<span>{error.toString()}</span>);
   return <BookmarkList bookmarks={data.bookmarks} />;
@@ -109,9 +115,14 @@ const renderSeach = () => {
                   variables: { name: search.value },
                 });
 
-                client.cache.writeQuery({
-                  query: getBookmarks,
-                  data: { bookmarks: data.bookmarks },
+                // client.cache.writeQuery({
+                //   query: getBookmarks,
+                //   data: { bookmarks: data.bookmarks },
+                // });
+
+                client.mutate({
+                  mutation: UPDATE_BOOKMARKS,
+                  variables: { bookmarks: data.bookmarks },
                 });
               }}
             >
