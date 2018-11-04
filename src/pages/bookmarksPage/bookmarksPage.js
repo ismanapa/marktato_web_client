@@ -1,13 +1,13 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Mutation } from 'react-apollo';
+import { ApolloConsumer, Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 import {
   BookmarkList,
 } from './components';
-import { getBookmarks } from '../../services/graphQueries';
+import { getBookmarks, searchBookmarks } from '../../services/graphQueries';
 
 const ADD_BOOKMARK = gql`
   mutation addBookmark (
@@ -89,10 +89,45 @@ const renderAddBookmarkForm = () => {
   );
 };
 
+const renderSeach = () => {
+  let search;
+  return (
+    <ApolloConsumer>
+        {client => (
+          <div style={{ marginTop: 20 }}>
+            <div>
+                <label>
+                  search
+                <input ref={(node) => { search = node; }} />
+                </label>
+              </div>
+
+            <button
+              onClick={async () => {
+                const { data } = await client.query({
+                  query: searchBookmarks,
+                  variables: { name: search.value },
+                });
+
+                client.cache.writeQuery({
+                  query: getBookmarks,
+                  data: { bookmarks: data.bookmarks },
+                });
+              }}
+            >
+              Click me!
+            </button>
+          </div>
+        )}
+      </ApolloConsumer>
+  );
+};
+
 const BookmarksPage = ({ data, loading, error }) => (
   <Fragment>
     {loading ? <CircularProgress /> : renderList(data, error)}
     {renderAddBookmarkForm()}
+    {renderSeach()}
   </Fragment>
 );
 
