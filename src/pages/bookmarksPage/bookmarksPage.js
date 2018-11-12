@@ -8,6 +8,8 @@ import {
   BookmarkList,
 } from './components';
 import { getBookmarks, searchBookmarks } from '../../services/graphQueries';
+import searchBookmarksAction from '../../services/graphActions/searchBookmarksActions';
+import { withGraphClient } from '../../hoc';
 
 const ADD_BOOKMARK = gql`
   mutation addBookmark (
@@ -24,12 +26,6 @@ const ADD_BOOKMARK = gql`
       name,
       url
     }
-  }
-`;
-
-const UPDATE_BOOKMARKS = gql`
-  mutation UpdateBookmarks($bookmarks: [Bookmark]) {
-    updateBookmarks(bookmarks: $bookmarks) @client
   }
 `;
 
@@ -54,7 +50,7 @@ const renderAddBookmarkForm = () => {
             data: { bookmarks: bookmarks.concat([addBookmark]) },
           });
         }}
-        >
+      >
         {
           (addBookmark, { data }) => (
             <form
@@ -95,57 +91,43 @@ const renderAddBookmarkForm = () => {
   );
 };
 
-const renderSeach = () => {
+const renderSeach = (makeSearch) => {
   let search;
   return (
-    <ApolloConsumer>
-        {client => (
-          <div style={{ marginTop: 20 }}>
-            <div>
-                <label>
-                  search
-                <input ref={(node) => { search = node; }} />
-                </label>
-              </div>
+    <div style={{ marginTop: 20 }}>
+      <div>
+        <label>
+          search
+          <input ref={(node) => { search = node; }} />
+        </label>
+      </div>
 
-            <button
-              onClick={async () => {
-                const { data } = await client.query({
-                  query: searchBookmarks,
-                  variables: { name: search.value },
-                });
-
-                // client.cache.writeQuery({
-                //   query: getBookmarks,
-                //   data: { bookmarks: data.bookmarks },
-                // });
-
-                client.mutate({
-                  mutation: UPDATE_BOOKMARKS,
-                  variables: { bookmarks: data.bookmarks },
-                });
-              }}
-            >
-              Click me!
-            </button>
-          </div>
-        )}
-      </ApolloConsumer>
+      <button
+        onClick={async () => { makeSearch(search.value); }}>
+        Click me!
+      </button>
+    </div>
   );
 };
 
-const BookmarksPage = ({ data, loading, error }) => (
-  <Fragment>
-    {loading ? <CircularProgress /> : renderList(data, error)}
-    {renderAddBookmarkForm()}
-    {renderSeach()}
-  </Fragment>
+const BookmarksPage = ({
+  data,
+  loading,
+  error,
+  makeSearch,
+}) => (
+    <Fragment>
+      {loading ? <CircularProgress /> : renderList(data, error)}
+      {renderAddBookmarkForm()}
+      {renderSeach(makeSearch)}
+    </Fragment>
 );
 
 BookmarksPage.propTypes = {
   data: PropTypes.object,
   loading: PropTypes.bool,
   error: PropTypes.object,
+  makeSearch: PropTypes.func,
 };
 
-export default BookmarksPage;
+export default withGraphClient({ makeSearch: searchBookmarksAction })(BookmarksPage);
