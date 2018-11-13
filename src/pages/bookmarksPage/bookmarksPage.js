@@ -1,92 +1,61 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { ApolloConsumer, Mutation } from 'react-apollo';
-import gql from 'graphql-tag';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 import {
   BookmarkList,
 } from './components';
-import { getBookmarks, searchBookmarks } from '../../services/graphQueries';
+
 import searchBookmarksAction from '../../services/graphActions/searchBookmarksActions';
+import addBookmarkAction from '../../services/graphActions/addBookmarkAction';
 import { withGraphClient } from '../../hoc';
 
-const ADD_BOOKMARK = gql`
-  mutation addBookmark (
-    $name: String,
-    $description: String,
-    $url: String
-  ){
-    addBookmark(
-      name: $name,
-      description: $description,
-      url: $url
-    ) {
-      id,
-      name,
-      url
-    }
-  }
-`;
 
 const renderList = (data, error) => {
   if (error) return (<span>{error.toString()}</span>);
   return <BookmarkList bookmarks={data.bookmarks} />;
 };
 
-const renderAddBookmarkForm = () => {
+const renderAddBookmarkForm = (addBookmark) => {
   let name;
   let description;
   let url;
   return (
     <div>
       <h2>Add bookmark form</h2>
-      <Mutation
-        mutation={ADD_BOOKMARK}
-        update={(cache, { data: { addBookmark } }) => {
-          const { bookmarks } = cache.readQuery({ query: getBookmarks });
-          cache.writeQuery({
-            query: getBookmarks,
-            data: { bookmarks: bookmarks.concat([addBookmark]) },
-          });
+
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          addBookmark({ name: name.value, description: description.value, url: url.value });
+          name.value = '';
+          description.value = '';
+          url.value = '';
         }}
       >
-        {
-          (addBookmark, { data }) => (
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                addBookmark({ variables: { name: name.value, description: description.value, url: url.value } });
-                name.value = '';
-                description.value = '';
-                url.value = '';
-              }}
-            >
-              <div>
-                <label>
-                  name
+        <div>
+          <label>
+            name
                 <input ref={(node) => { name = node; }} />
-                </label>
-              </div>
+          </label>
+        </div>
 
-              <div>
-                <label>
-                  description
+        <div>
+          <label>
+            description
                 <input ref={(node) => { description = node; }} />
-                </label>
-              </div>
+          </label>
+        </div>
 
-              <div>
-                <label>
-                  url
+        <div>
+          <label>
+            url
                 <input ref={(node) => { url = node; }} />
-                </label>
-              </div>
+          </label>
+        </div>
 
-              <button type="submit">Add bookmark</button>
-            </form>
-          )}
-      </Mutation>
+        <button type="submit">Add bookmark</button>
+      </form>
     </div>
   );
 };
@@ -115,10 +84,11 @@ const BookmarksPage = ({
   loading,
   error,
   makeSearch,
+  addBookmark,
 }) => (
     <Fragment>
       {loading ? <CircularProgress /> : renderList(data, error)}
-      {renderAddBookmarkForm()}
+      {renderAddBookmarkForm(addBookmark)}
       {renderSeach(makeSearch)}
     </Fragment>
 );
@@ -128,6 +98,10 @@ BookmarksPage.propTypes = {
   loading: PropTypes.bool,
   error: PropTypes.object,
   makeSearch: PropTypes.func,
+  addBookmark: PropTypes.func,
 };
 
-export default withGraphClient({ makeSearch: searchBookmarksAction })(BookmarksPage);
+export default withGraphClient({
+  makeSearch: searchBookmarksAction,
+  addBookmark: addBookmarkAction,
+})(BookmarksPage);

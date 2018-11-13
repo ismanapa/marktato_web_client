@@ -14,7 +14,6 @@ const withGraphClient = actions => WrappedComponent => (props) => {
           const action = actions[index];
           newProps[index] = action(client);
         });
-
         return (
           <WrappedComponent {...newProps} client={client} />
         );
