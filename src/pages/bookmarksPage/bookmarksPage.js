@@ -11,50 +11,6 @@ const renderList = (data, error) => {
   return <BookmarkList bookmarks={data.bookmarks} />;
 };
 
-const renderAddBookmarkForm = (addBookmark) => {
-  let name;
-  let description;
-  let url;
-  return (
-    <div>
-      <h2>Add bookmark form</h2>
-
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          addBookmark({ name: name.value, description: description.value, url: url.value });
-          name.value = '';
-          description.value = '';
-          url.value = '';
-        }}
-      >
-        <div>
-          <label>
-            name
-                <input ref={(node) => { name = node; }} />
-          </label>
-        </div>
-
-        <div>
-          <label>
-            description
-                <input ref={(node) => { description = node; }} />
-          </label>
-        </div>
-
-        <div>
-          <label>
-            url
-                <input ref={(node) => { url = node; }} />
-          </label>
-        </div>
-
-        <button type="submit">Add bookmark</button>
-      </form>
-    </div>
-  );
-};
-
 const renderSeach = (makeSearch) => {
   let search;
   return (
@@ -83,7 +39,6 @@ const BookmarksPage = ({
 }) => (
     <Fragment>
       {loading ? <CircularProgress /> : renderList(data, error)}
-      {renderAddBookmarkForm(addBookmark)}
       {renderSeach(makeSearch)}
     </Fragment>
 );
