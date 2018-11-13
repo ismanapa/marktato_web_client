@@ -32,47 +32,8 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "function",
     "props": Object {
-      "children": <BookmarktList
-        bookmarks={
-          Array [
-            Object {
-              "name": "bookmark1",
-            },
-            Object {
-              "name": "bookmark2",
-            },
-          ]
-        }
-      />,
-    },
-    "ref": null,
-    "rendered": Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "host",
-      "props": Object {
-        "bookmarks": Array [
-          Object {
-            "name": "bookmark1",
-          },
-          Object {
-            "name": "bookmark2",
-          },
-        ],
-      },
-      "ref": null,
-      "rendered": null,
-      "type": "BookmarktList",
-    },
-    "type": Symbol(react.fragment),
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "function",
-      "props": Object {
-        "children": <BookmarktList
+      "children": Array [
+        <BookmarktList
           bookmarks={
             Array [
               Object {
@@ -84,9 +45,62 @@ ShallowWrapper {
             ]
           }
         />,
-      },
-      "ref": null,
-      "rendered": Object {
+        <div>
+          <h2>
+            Add bookmark form
+          </h2>
+          <form
+            onSubmit={[Function]}
+          >
+            <div>
+              <label>
+                name
+                <input />
+              </label>
+            </div>
+            <div>
+              <label>
+                description
+                <input />
+              </label>
+            </div>
+            <div>
+              <label>
+                url
+                <input />
+              </label>
+            </div>
+            <button
+              type="submit"
+            >
+              Add bookmark
+            </button>
+          </form>
+        </div>,
+        <div
+          style={
+            Object {
+              "marginTop": 20,
+            }
+          }
+        >
+          <div>
+            <label>
+              search
+              <input />
+            </label>
+          </div>
+          <button
+            onClick={[Function]}
+          >
+            Click me!
+          </button>
+        </div>,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
         "instance": null,
         "key": undefined,
         "nodeType": "host",
@@ -104,6 +118,690 @@ ShallowWrapper {
         "rendered": null,
         "type": "BookmarktList",
       },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <h2>
+              Add bookmark form
+            </h2>,
+            <form
+              onSubmit={[Function]}
+            >
+              <div>
+                <label>
+                  name
+                  <input />
+                </label>
+              </div>
+              <div>
+                <label>
+                  description
+                  <input />
+                </label>
+              </div>
+              <div>
+                <label>
+                  url
+                  <input />
+                </label>
+              </div>
+              <button
+                type="submit"
+              >
+                Add bookmark
+              </button>
+            </form>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Add bookmark form",
+            },
+            "ref": null,
+            "rendered": "Add bookmark form",
+            "type": "h2",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                <div>
+                  <label>
+                    name
+                    <input />
+                  </label>
+                </div>,
+                <div>
+                  <label>
+                    description
+                    <input />
+                  </label>
+                </div>,
+                <div>
+                  <label>
+                    url
+                    <input />
+                  </label>
+                </div>,
+                <button
+                  type="submit"
+                >
+                  Add bookmark
+                </button>,
+              ],
+              "onSubmit": [Function],
+            },
+            "ref": null,
+            "rendered": Array [
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": <label>
+                    name
+                    <input />
+                  </label>,
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      "name",
+                      <input />,
+                    ],
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    "name",
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {},
+                      "ref": [Function],
+                      "rendered": null,
+                      "type": "input",
+                    },
+                  ],
+                  "type": "label",
+                },
+                "type": "div",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": <label>
+                    description
+                    <input />
+                  </label>,
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      "description",
+                      <input />,
+                    ],
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    "description",
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {},
+                      "ref": [Function],
+                      "rendered": null,
+                      "type": "input",
+                    },
+                  ],
+                  "type": "label",
+                },
+                "type": "div",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": <label>
+                    url
+                    <input />
+                  </label>,
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": Array [
+                      "url",
+                      <input />,
+                    ],
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    "url",
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "host",
+                      "props": Object {},
+                      "ref": [Function],
+                      "rendered": null,
+                      "type": "input",
+                    },
+                  ],
+                  "type": "label",
+                },
+                "type": "div",
+              },
+              Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "Add bookmark",
+                  "type": "submit",
+                },
+                "ref": null,
+                "rendered": "Add bookmark",
+                "type": "button",
+              },
+            ],
+            "type": "form",
+          },
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <div>
+              <label>
+                search
+                <input />
+              </label>
+            </div>,
+            <button
+              onClick={[Function]}
+            >
+              Click me!
+            </button>,
+          ],
+          "style": Object {
+            "marginTop": 20,
+          },
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": <label>
+                search
+                <input />
+              </label>,
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  "search",
+                  <input />,
+                ],
+              },
+              "ref": null,
+              "rendered": Array [
+                "search",
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {},
+                  "ref": [Function],
+                  "rendered": null,
+                  "type": "input",
+                },
+              ],
+              "type": "label",
+            },
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Click me!",
+              "onClick": [Function],
+            },
+            "ref": null,
+            "rendered": "Click me!",
+            "type": "button",
+          },
+        ],
+        "type": "div",
+      },
+    ],
+    "type": Symbol(react.fragment),
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": Array [
+          <BookmarktList
+            bookmarks={
+              Array [
+                Object {
+                  "name": "bookmark1",
+                },
+                Object {
+                  "name": "bookmark2",
+                },
+              ]
+            }
+          />,
+          <div>
+            <h2>
+              Add bookmark form
+            </h2>
+            <form
+              onSubmit={[Function]}
+            >
+              <div>
+                <label>
+                  name
+                  <input />
+                </label>
+              </div>
+              <div>
+                <label>
+                  description
+                  <input />
+                </label>
+              </div>
+              <div>
+                <label>
+                  url
+                  <input />
+                </label>
+              </div>
+              <button
+                type="submit"
+              >
+                Add bookmark
+              </button>
+            </form>
+          </div>,
+          <div
+            style={
+              Object {
+                "marginTop": 20,
+              }
+            }
+          >
+            <div>
+              <label>
+                search
+                <input />
+              </label>
+            </div>
+            <button
+              onClick={[Function]}
+            >
+              Click me!
+            </button>
+          </div>,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "bookmarks": Array [
+              Object {
+                "name": "bookmark1",
+              },
+              Object {
+                "name": "bookmark2",
+              },
+            ],
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "BookmarktList",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <h2>
+                Add bookmark form
+              </h2>,
+              <form
+                onSubmit={[Function]}
+              >
+                <div>
+                  <label>
+                    name
+                    <input />
+                  </label>
+                </div>
+                <div>
+                  <label>
+                    description
+                    <input />
+                  </label>
+                </div>
+                <div>
+                  <label>
+                    url
+                    <input />
+                  </label>
+                </div>
+                <button
+                  type="submit"
+                >
+                  Add bookmark
+                </button>
+              </form>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "Add bookmark form",
+              },
+              "ref": null,
+              "rendered": "Add bookmark form",
+              "type": "h2",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": Array [
+                  <div>
+                    <label>
+                      name
+                      <input />
+                    </label>
+                  </div>,
+                  <div>
+                    <label>
+                      description
+                      <input />
+                    </label>
+                  </div>,
+                  <div>
+                    <label>
+                      url
+                      <input />
+                    </label>
+                  </div>,
+                  <button
+                    type="submit"
+                  >
+                    Add bookmark
+                  </button>,
+                ],
+                "onSubmit": [Function],
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": <label>
+                      name
+                      <input />
+                    </label>,
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": Array [
+                        "name",
+                        <input />,
+                      ],
+                    },
+                    "ref": null,
+                    "rendered": Array [
+                      "name",
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "host",
+                        "props": Object {},
+                        "ref": [Function],
+                        "rendered": null,
+                        "type": "input",
+                      },
+                    ],
+                    "type": "label",
+                  },
+                  "type": "div",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": <label>
+                      description
+                      <input />
+                    </label>,
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": Array [
+                        "description",
+                        <input />,
+                      ],
+                    },
+                    "ref": null,
+                    "rendered": Array [
+                      "description",
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "host",
+                        "props": Object {},
+                        "ref": [Function],
+                        "rendered": null,
+                        "type": "input",
+                      },
+                    ],
+                    "type": "label",
+                  },
+                  "type": "div",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": <label>
+                      url
+                      <input />
+                    </label>,
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {
+                      "children": Array [
+                        "url",
+                        <input />,
+                      ],
+                    },
+                    "ref": null,
+                    "rendered": Array [
+                      "url",
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "host",
+                        "props": Object {},
+                        "ref": [Function],
+                        "rendered": null,
+                        "type": "input",
+                      },
+                    ],
+                    "type": "label",
+                  },
+                  "type": "div",
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "Add bookmark",
+                    "type": "submit",
+                  },
+                  "ref": null,
+                  "rendered": "Add bookmark",
+                  "type": "button",
+                },
+              ],
+              "type": "form",
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <div>
+                <label>
+                  search
+                  <input />
+                </label>
+              </div>,
+              <button
+                onClick={[Function]}
+              >
+                Click me!
+              </button>,
+            ],
+            "style": Object {
+              "marginTop": 20,
+            },
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": <label>
+                  search
+                  <input />
+                </label>,
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": Array [
+                    "search",
+                    <input />,
+                  ],
+                },
+                "ref": null,
+                "rendered": Array [
+                  "search",
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "host",
+                    "props": Object {},
+                    "ref": [Function],
+                    "rendered": null,
+                    "type": "input",
+                  },
+                ],
+                "type": "label",
+              },
+              "type": "div",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "Click me!",
+                "onClick": [Function],
+              },
+              "ref": null,
+              "rendered": "Click me!",
+              "type": "button",
+            },
+          ],
+          "type": "div",
+        },
+      ],
       "type": Symbol(react.fragment),
     },
   ],

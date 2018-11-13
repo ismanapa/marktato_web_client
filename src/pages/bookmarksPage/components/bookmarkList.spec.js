@@ -9,16 +9,16 @@ describe('BookmarkList component', () => {
     expect(wrapper.props().bookmarks).toHaveLength(0);
   });
 
-  it('Should lsit bookmarks', () => {
+  it('Should list bookmarks', () => {
     const props = {
       bookmarks: [
-        { name: 'bookmark 1' },
-        { name: 'bookmark 2' },
+        { id: 1, name: 'bookmark 1' },
+        { id: 2, name: 'bookmark 2' },
       ],
     };
 
     const wrapper = shallow(<BookmarkList {...props}/>);
-    const listItems = wrapper.find('li');
+    const listItems = wrapper.find('BookmarkItem');
 
     expect(listItems).toHaveLength(props.bookmarks.length);
   });
