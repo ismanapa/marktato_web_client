@@ -6,11 +6,6 @@ import {
   BookmarkList,
 } from './components';
 
-import searchBookmarksAction from '../../services/graphActions/searchBookmarksActions';
-import addBookmarkAction from '../../services/graphActions/addBookmarkAction';
-import { withGraphClient } from '../../hoc';
-
-
 const renderList = (data, error) => {
   if (error) return (<span>{error.toString()}</span>);
   return <BookmarkList bookmarks={data.bookmarks} />;
@@ -101,7 +96,4 @@ BookmarksPage.propTypes = {
   addBookmark: PropTypes.func,
 };
 
-export default withGraphClient({
-  makeSearch: searchBookmarksAction,
-  addBookmark: addBookmarkAction,
-})(BookmarksPage);
+export default BookmarksPage;

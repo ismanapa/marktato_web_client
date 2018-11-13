@@ -3,9 +3,7 @@ import { ApolloConsumer } from 'react-apollo';
 
 const withGraphClient = actions => WrappedComponent => (props) => {
   const newProps = Object.assign({}, props);
-
   const actionsIndex = Object.keys(actions);
-
 
   return (
     <ApolloConsumer>
