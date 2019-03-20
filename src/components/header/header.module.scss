@@ -1,14 +1,16 @@
 
+@import "../../assets/style/colors";
+
 .container{
-  background-color: #e5e5e5;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-  padding: 20px;   
+  background-color: $primary-bgcolor;
+  padding: 10px;   
   display: flex;
   align-items: center;
   flex-direction: row;
   justify-content: space-between; 
 
   .title{
+    color: $primary-color;
     letter-spacing: 1px;
     font-weight: 500;
     font-size: 1.3em;

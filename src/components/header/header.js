@@ -32,7 +32,7 @@ class Header extends React.Component {
           <Button
             onClick={this.openModal.bind(this)}
             color="primary"
-            variant="fab"
+            variant="contained"
             aria-label="Add">
             <AddIcon />
           </Button>
